@@ -7,32 +7,16 @@ import broadlink
 import argparse
 import re
 import uvicorn
-from code import Code
-from os import environ, path
-from json import dumps
-from sqliteconnector import SqliteConnector
 from broadlink.exceptions import ReadError, StorageError
-from broadlink import exceptions as e
-from broadlink.const import DEFAULT_BCAST_ADDR, DEFAULT_PORT, DEFAULT_TIMEOUT
-from broadlink.alarm import S1C
-from broadlink.climate import hysen
-from broadlink.cover import dooya
-from broadlink.device import Device, ping, scan
-from broadlink.light import lb1, lb2
-from broadlink.remote import rm, rm4, rm4mini, rm4pro, rmmini, rmminib, rmpro
-from broadlink.sensor import a1
-from broadlink.switch import bg1, mp1, sp1, sp2, sp2s, sp3, sp3s, sp4, sp4b
-from subprocess import call
-from loguru import logger
-from fastapi import FastAPI, Request, File, Form, UploadFile
-from fastapi.responses import UJSONResponse
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import JSONResponse
-from starlette.responses import FileResponse
+from code import Code
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from loguru import logger
+from os import path
+from sqliteconnector import SqliteConnector
 from starlette_exporter import PrometheusMiddleware, handle_metrics
 
 
